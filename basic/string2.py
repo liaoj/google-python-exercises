@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4 -tt
+#!/usr/bin/python -tt
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -16,16 +16,16 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-    b = ''
+  b = ''
   if len(s) >= 3:
-      if s[-3:] == 'ing':
-          b = s + 'ly'
-          return b
-      else:
-          b = s + 'ing'
-          return b
+    if s[-3:] == 'ing':
+      b = s + 'ly'
+      return b
+    else:
+      b = s + 'ing'
+      return b
   else:
-      return s
+    return s
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -39,7 +39,12 @@ def not_bad(s):
   a = s.find('not')
   b = s.find('bad')
   if a < b:
-      return s.replace(s[a:b], good)
+    # print "s: ", s
+    # print "s[a:b + 1]: ", s[a:b + 1]
+    return s.replace(s[a:b + 3], 'good')
+  else:
+    return s
+    
 
 
 # F. front_back
@@ -49,23 +54,17 @@ def not_bad(s):
 # e.g. 'abcde', the front half is 'abc', the back half 'de'.
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
+
+def half(s):
+  len2 = (len(s) + 1)/2
+  return [s[:len2], s[len2:]]
+
 def front_back(a, b):
     
-  if len(a)%2 ==0:
-      a-front = a[:len(a)/2]
-      a-back = a[len(a)/2:]
-  else:
-      a-front = a[:len(a)/2 + 1]
-      a-back = a[len(a)/2 +2 :]
+  aa = half(a)
+  bb = half(b)
       
-  if len(b)%2 ==0:
-      b-front = b[:len(b)/2]
-      b-back = b[len(b)/2:]
-  else:
-      b-front = b[:len(b)/2 + 1]
-      b-back = a[len(b)/2 +2 :]
-      
-  return a-front + b-front + a-back + b-back
+  return aa[0] + bb[0] + aa[1] + bb[1]
   
 
 
