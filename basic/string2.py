@@ -16,9 +16,16 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-  # +++your code here+++
-  return
-
+    b = ''
+  if len(s) >= 3:
+      if s[-3:] == 'ing':
+          b = s + 'ly'
+          return b
+      else:
+          b = s + 'ing'
+          return b
+  else:
+      return s
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -29,8 +36,10 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+  a = s.find('not')
+  b = s.find('bad')
+  if a < b:
+      return s.replace(s[a:b], good)
 
 
 # F. front_back
@@ -41,8 +50,23 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  # +++your code here+++
-  return
+    
+  if len(a)%2 ==0:
+      a-front = a[:len(a)/2]
+      a-back = a[len(a)/2:]
+  else:
+      a-front = a[:len(a)/2 + 1]
+      a-back = a[len(a)/2 +2 :]
+      
+  if len(b)%2 ==0:
+      b-front = b[:len(b)/2]
+      b-back = b[len(b)/2:]
+  else:
+      b-front = b[:len(b)/2 + 1]
+      b-back = a[len(b)/2 +2 :]
+      
+  return a-front + b-front + a-back + b-back
+  
 
 
 # Simple provided test() function used in main() to print

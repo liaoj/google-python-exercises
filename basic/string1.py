@@ -24,8 +24,10 @@
 # So donuts(5) returns 'Number of donuts: 5'
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
-  # +++your code here+++
-  return
+  if count < 10:
+      return "Number of donuts: %d" % (count)
+  else:
+      return "Number of donuts: many"
 
 
 # B. both_ends
@@ -34,8 +36,10 @@ def donuts(count):
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
-  # +++your code here+++
-  return
+  if len(s) >= 2:
+    return s[:2] + s[-2:]
+  else:
+    return ''
 
 
 # C. fix_start
@@ -47,9 +51,21 @@ def both_ends(s):
 # Assume that the string is length 1 or more.
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
+
+def str_replace(s, cha, chb):
+  i = 0
+  b = ''
+  for each_char in s:
+    if each_char == cha:
+      b += chb
+    else:
+      b += each_char
+  return b
+
 def fix_start(s):
-  # +++your code here+++
-  return
+  # return s[0]+ s[1:].replace(s[0], '*')
+  return s[0] + str_replace(s[1:], s[0], '*')
+  
 
 
 # D. MixUp
@@ -60,8 +76,11 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-  # +++your code here+++
-  return
+  c = a.replace(a[:2], b[:2])
+  d = b.replace(b[:2], a[:2])
+  e = [c, d]
+  f = ' '.join(e)
+  return f
 
 
 # Provided simple test() function used in main() to print
@@ -98,6 +117,7 @@ def main():
   test(fix_start('aardvark'), 'a*rdv*rk')
   test(fix_start('google'), 'goo*le')
   test(fix_start('donut'), 'donut')
+  test(fix_start('bubble is a bubble'), 'bu**le is a *u**le')
 
   print
   print 'mix_up'
